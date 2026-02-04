@@ -209,10 +209,10 @@ export const generateAgreementPdf = async (
 
   const remainingClauses = [
     `Security deposit will be returned within 14 days of moving out.`,
-    `Smoking is strictly prohibited within the apartment and building. If you are found smoking in the apartment, a $1,000 fine will be issued.`,
+    `Smoking is strictly prohibited in the apartment and throughout the building. If smoking is detected or observed within the apartment, a $1,000 fine will be assessed.`,
     `${data.tenantName} agrees to adhere to cleanliness standards or additional incurred charges for maid services will be required.`,
     `${data.tenantName} shall pay for all property damage he/she is responsible for in the event something happens during sublease.`,
-    `A move out cleaning fee of $100 will be applied.`,
+    `A move-out cleaning fee of $100 will be applied, along with an additional $20 for replacement of the mattress protector cover.`,
     `A joint inspection of the premises shall be conducted by ${data.sublessorName} and ${data.tenantName} recording any damage or deficiencies that exist as the start of the sublease period.`,
     `${data.tenantName} shall be liable for the cost of any cleaning or repair to correct damages caused by ${data.tenantName} at the end of the period if not recorded at the start of the agreement, normal wear and tears excepted. Security deposit will be refunded after vacating the apartment given there is no damage (except normal wear and tear) found prior to vacating.`,
     `${data.tenantName} must reimburse ${data.sublessorName} for the following fee and expenses incurred by ${data.sublessorName.split(' ')[0]}: Any legal fees and disbursements for the preparation and service of legal notices; legal actions or proceedings brought by ${data.sublessorName} against ${data.tenantName} because of a default by ${data.tenantName} under this agreement; or for defending lawsuits brought against ${data.sublessorName} because of the actions of ${data.tenantName}, or any associates of ${data.tenantName}.`,
