@@ -1,5 +1,5 @@
 import AgreementForm from '@/components/AgreementForm';
-import hiveLogo from '@/assets/hive-logo.png';
+import hiveLogo from '@/assets/hive-logo-new.png';
 
 const Index = () => {
   return (
