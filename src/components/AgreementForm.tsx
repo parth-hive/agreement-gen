@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { format } from 'date-fns';
-import { CalendarIcon, FileText } from 'lucide-react';
+import { useState, useMemo } from 'react';
+import { format, getDaysInMonth, getDate, endOfMonth } from 'date-fns';
+import { CalendarIcon, FileText, Calculator } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -12,6 +12,7 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover';
 import { generateAgreementPdf, AgreementData, GeneratedPdfDownload } from '@/lib/generatePdf';
+import ProrationCalculator from '@/components/ProrationCalculator';
 import { useToast } from '@/hooks/use-toast';
 
 const AgreementForm = () => {
@@ -159,9 +160,16 @@ const AgreementForm = () => {
           />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="proRateRent" className="text-xs uppercase tracking-wider text-muted-foreground">
-            Prorated Rent ($)
-          </Label>
+          <div className="flex items-center justify-between">
+            <Label htmlFor="proRateRent" className="text-xs uppercase tracking-wider text-muted-foreground">
+              Prorated Rent ($)
+            </Label>
+            <ProrationCalculator
+              monthlyRent={formData.rent}
+              moveInDate={formData.leaseStartDate}
+              onApply={(value) => handleInputChange('proRateRent', value)}
+            />
+          </div>
           <Input
             id="proRateRent"
             type="number"
