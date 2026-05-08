@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { format } from 'date-fns';
-import { CalendarIcon, FileText } from 'lucide-react';
+import { useState, useMemo } from 'react';
+import { format, getDaysInMonth, getDate, endOfMonth } from 'date-fns';
+import { CalendarIcon, FileText, Calculator } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
