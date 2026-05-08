@@ -159,9 +159,16 @@ const AgreementForm = () => {
           />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="proRateRent" className="text-xs uppercase tracking-wider text-muted-foreground">
-            Prorated Rent ($)
-          </Label>
+          <div className="flex items-center justify-between">
+            <Label htmlFor="proRateRent" className="text-xs uppercase tracking-wider text-muted-foreground">
+              Prorated Rent ($)
+            </Label>
+            <ProrationCalculator
+              monthlyRent={formData.rent}
+              moveInDate={formData.leaseStartDate}
+              onApply={(value) => handleInputChange('proRateRent', value)}
+            />
+          </div>
           <Input
             id="proRateRent"
             type="number"
