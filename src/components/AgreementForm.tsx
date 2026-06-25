@@ -317,17 +317,6 @@ const AgreementForm = () => {
         <p className="text-xs text-muted-foreground text-center">
           PDFs will be automatically downloaded to your device
         </p>
-        {latestDownload && (
-          <a
-            href={latestDownload.url}
-            download={latestDownload.fileName}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block text-center text-sm font-semibold text-primary underline underline-offset-4"
-          >
-            Download latest PDF
-          </a>
-        )}
       </div>
     </div>
   );
