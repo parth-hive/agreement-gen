@@ -295,6 +295,6 @@ export const generateAgreementPdf = async (
   pdf.text('________________________', pageWidth - margin - 50, yPos);
 
   // Save the PDF
-  const fileName = `${data.tenantName} Sublease Agreement.pdf`;
+  const fileName = `${data.tenantName} Agreement.pdf`;
   return createPdfDownload(pdf, fileName);
 };

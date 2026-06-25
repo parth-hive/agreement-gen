@@ -302,7 +302,7 @@ Deno.serve(async (req) => {
 
   try {
     const bytes = buildPdf(parsed.data);
-    const fileName = `${parsed.data.tenantName} Sublease Agreement.pdf`;
+    const fileName = `${parsed.data.tenantName} Agreement.pdf`;
 
     if (parsed.data.format === "base64") {
       let bin = "";
