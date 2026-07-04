@@ -1,5 +1,5 @@
-import { useState, useMemo } from 'react';
-import { format, getDaysInMonth, getDate, endOfMonth } from 'date-fns';
+import { useState } from 'react';
+import { format } from 'date-fns';
 import { CalendarIcon, FileText, Calculator } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -11,14 +11,13 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
-import { generateAgreementPdf, AgreementData, GeneratedPdfDownload } from '@/lib/generatePdf';
+import { generateAgreementPdf, AgreementData } from '@/lib/generatePdf';
 import ProrationCalculator from '@/components/ProrationCalculator';
 import { useToast } from '@/hooks/use-toast';
 
 const AgreementForm = () => {
   const { toast } = useToast();
   const [isGenerating, setIsGenerating] = useState(false);
-  const [latestDownload, setLatestDownload] = useState<GeneratedPdfDownload | null>(null);
   
   const [formData, setFormData] = useState({
     tenantName: '',
@@ -78,16 +77,11 @@ const AgreementForm = () => {
         agreementDate: formData.agreementDate!.toISOString(),
       };
 
-      if (latestDownload) {
-        URL.revokeObjectURL(latestDownload.url);
-      }
-
-      const download = await generateAgreementPdf(agreementData, includeLetterhead);
-      setLatestDownload(download);
+      await generateAgreementPdf(agreementData, includeLetterhead);
 
       toast({
-        title: 'PDF Generated!',
-        description: 'If the download did not start, use the download link below.',
+        title: 'PDF download started',
+        description: `${includeLetterhead ? 'Letterhead' : 'Plain'} PDF is being downloaded.`,
       });
     } catch (error) {
       toast({
@@ -317,17 +311,6 @@ const AgreementForm = () => {
         <p className="text-xs text-muted-foreground text-center">
           PDFs will be automatically downloaded to your device
         </p>
-        {latestDownload && (
-          <a
-            href={latestDownload.url}
-            download={latestDownload.fileName}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block text-center text-sm font-semibold text-primary underline underline-offset-4"
-          >
-            Download latest PDF
-          </a>
-        )}
       </div>
     </div>
   );
